@@ -11,8 +11,8 @@ class Lessi implements IAnimalRepository
 
     public function saveAnimal(string $name): Lessi
     {
-        if (!isset($this->animals[$name])) {
-            $className = ucfirst($name);
+        $className = ucfirst(strtolower($name));
+        if (!isset($this->animals[$name]) && class_exists($className)) {
             $this->animals[$name] = new $className();
         }
         return $this;
@@ -22,13 +22,8 @@ class Lessi implements IAnimalRepository
     {
         return implode(' и ', [
             'Редчайшая Электронная Совершенная Собака',
-            ...array_values(array_map(fn($animal) => $animal->getDescription(), $this->animals))
+            ...array_values(array_map(fn($animal) => $animal->getName(), $this->animals))
         ]);
-    }
-
-    public function getAnimal(string $name)
-    {
-        return $this->animals[$name];
     }
 
     public function doAction(string $action): void
@@ -41,7 +36,12 @@ class Lessi implements IAnimalRepository
             }
         }
         if (!$isActionDone) {
-            echo "I can't do it yet...";
+            $this->doNothing();
         }
+    }
+
+    public function doNothing(): void
+    {
+        echo 'Я ещё не могу этого делать';
     }
 }

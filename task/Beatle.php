@@ -7,12 +7,13 @@ class Beatle extends Animal
 
     public function __construct()
     {
-        $this->setDescription('Жук');
+        $this->setName('Жук');
+        $this->setAction('Летать');
     }
 
     public function fly(): void
     {
-        echo 'fly';
+        echo $this->getAction();
     }
 
 }

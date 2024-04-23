@@ -2,15 +2,26 @@
 
 abstract class Animal
 {
-    private string $description;
+    private string $name;
+    private string $action;
 
-    public function getDescription(): string
+    public function getName(): string
     {
-        return $this->description;
+        return $this->name;
     }
 
-    public function setDescription(string $description): void
+    public function setName(string $name): void
     {
-        $this->description = $description;
+        $this->name = $name;
+    }
+
+    public function getAction(): string
+    {
+        return $this->action;
+    }
+
+    public function setAction(string $action): void
+    {
+        $this->action = $action;
     }
 }

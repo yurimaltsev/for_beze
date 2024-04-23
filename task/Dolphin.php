@@ -7,11 +7,12 @@ class Dolphin extends Animal
 
     public function __construct()
     {
-        $this->setDescription('Дельфин');
+        $this->setName('Дельфин');
+        $this->setAction('Плавать');
     }
 
     public function swim(): void
     {
-        echo 'swim';
+        echo $this->getAction();
     }
 }

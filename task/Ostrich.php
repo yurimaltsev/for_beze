@@ -7,11 +7,12 @@ class Ostrich extends Animal
 
     public function __construct()
     {
-        $this->setDescription('Страус');
+        $this->setName('Страус');
+        $this->setAction('Бежать');
     }
 
     public function run(): void
     {
-        echo 'run';
+        echo $this->getAction();
     }
 }
